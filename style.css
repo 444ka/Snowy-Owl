@@ -7,10 +7,19 @@
 * {
     margin: 0;
     padding: 0;
+    border: 1px red solid; /* For debugging layout */
+}
+
+.intro, .fun-fact-wings, .fun-fact-eyes, .fun-fact-diurnal {
+    padding: 50vh;
+    text-align: center;
 }
 
 h1, h2 { /* Titles */
     font-family: 'roca', sans-serif;
+    font-size: 100px;
+    letter-spacing: -7px;
+    line-height: 0.8;
     text-align: center;
 }
 
@@ -23,7 +32,7 @@ h1 { /* Main title - Snowy Owls*/
     align-self: center;
 }
 
-h3 {
+h3, h4 {
     font-size: 50px;
     font-family: 'Lora', sans-serif;
 }
@@ -53,7 +62,7 @@ button {
     align-items: center;
     background-color: #39455a;
     text-align: center;
-    background-image: url('./images/hero-layered.jpg');
+    background-image: url('./images/hero.jpg');
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     background-position: right 10%; /* Adjust horizontal position to postion moon under title */
@@ -71,15 +80,16 @@ button {
     font-weight: bold;
 }
 
-.explore-scroll {
-    bottom: 20px;
-    font-size: 10px;
+.explore-scroll h3{
     color: #dbd098;
+    font-size: 30px;
+    text-shadow: 0 0 5px rgb(255, 242, 176) /* Yellow glow effect */;
 }
 
 #arrow-down {
     translate: 0 -10px;
     animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 211, 0.855)); /* Yellow glow effect */
 }
 
 @keyframes bounce {
@@ -97,11 +107,20 @@ button {
     gap: 100px;
     margin-bottom: 100px;
 }
-
-.intro, .fun-fact-wings, .fun-fact-eyes, .fun-fact-diurnal {
-    padding: 50vh;
-    text-align: center;
+/* Fun fact section - Wingspan */
+.fun-fact-wings p { 
+    color: #c3cad2;
+    font-size: 30px;
 }
+.fun-fact-wings h2 { color: #2d3540;}
+/* Fun fact section - Diurnal */
+.fun-fact-diurnal .text-group {
+    color: #737b83;
+}
+
+.fun-fact-diurnal h4 { font-size: 25px;}
+.fun-fact-diurnal h2 { font-size: 150px;}
+ 
 
 /* Tree styles and animation */
 .trees {
