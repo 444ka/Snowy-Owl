@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'roca';
+    src: url("./fonts/Roca-font/Roca Heavy.ttf");
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    background-color: #39455a;
+    text-align: center;
+    background-image: url('./images/hero-layered.jpg');
+    background-size:  cover;
+    height: 150vh;
+}
+
+.fun-fact-eyes, .fun-fact-diurnal {
+    background-color: #05070a;
+    color: #dbd098;;
+}
+
+
+h1, h2 {
+    font-family: 'roca', sans-serif;
+    text-align: center;
+}
+
+/* Main title - Snowy Owls*/
+h1 {
+    font-size: 200px;
+    line-height: 0.65;
+    color: #f8f8f3;
+    text-shadow: #05070a 3px 3px 0px;
+}
+
+h3 {
+    font-family: 'Lora', sans-serif;
+}
+
+p {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+button {
+    font-family: 'Lora', monospace;
+    background-color: #dbd098;
+    color: #f8f8f3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
