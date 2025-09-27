@@ -9,35 +9,27 @@
     padding: 0;
 }
 
-.hero {
-    background-color: #39455a;
-    text-align: center;
-    background-image: url('./images/hero-layered.jpg');
-    background-size:  cover;
-    height: 150vh;
-}
-
-.fun-fact-eyes, .fun-fact-diurnal {
-    background-color: #05070a;
-    color: #dbd098;;
-}
-
-
-h1, h2 {
+h1, h2 { /* Titles */
     font-family: 'roca', sans-serif;
     text-align: center;
 }
 
-/* Main title - Snowy Owls*/
-h1 {
+h1 { /* Main title - Snowy Owls*/
     font-size: 200px;
     line-height: 0.65;
     color: #f8f8f3;
     text-shadow: #05070a 3px 3px 0px;
+    letter-spacing: -10px;
+    align-self: center;
 }
 
 h3 {
+    font-size: 50px;
     font-family: 'Lora', sans-serif;
+}
+
+.intro h3 { /* Intro title - Explore the  */
+    color: #a2aab8;
 }
 
 p {
@@ -53,4 +45,92 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+}
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #39455a;
+    text-align: center;
+    background-image: url('./images/hero-layered.jpg');
+    background-size:  cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    background-position: right 10%; /* Adjust horizontal position to postion moon under title */
+    height: 150vh; 
+}
+
+.fun-fact-eyes, .fun-fact-diurnal {
+    background-color: #05070a;
+    color: #dbd098;;
+}
+
+.hero-text p{
+    color: #a2aab8;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.explore-scroll {
+    bottom: 20px;
+    font-size: 10px;
+    color: #dbd098;
+}
+
+#arrow-down {
+    translate: 0 -10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 100px;
+}
+
+.intro, .fun-fact-wings, .fun-fact-eyes, .fun-fact-diurnal {
+    padding: 50vh;
+    text-align: center;
+}
+
+/* Tree styles and animation */
+.trees {
+  position: absolute;
+  bottom: -100px;
+  width: 100%;
+}
+
+.tree {
+  position: absolute;
+  bottom: 0;
+  height: 250px;
+  transform-origin: bottom center; /* so they sway from the trunk */
+  animation: sway 5s ease-in-out infinite alternate;
+}
+
+/* Place each tree differently */
+.left-1 { height: 550px; left: -5%; }
+.left-2 { left: 10%; }
+.right-1 { height: 400px; right: 10%; }
+.right-2 { height: 700px; right: -5%; }
+
+/* Slightly different timings for realism */
+.left-1 { animation-duration: 6s; }
+.left-2 { animation-duration: 5s; animation-delay: 1s; }
+.right-1 { animation-duration: 7s; animation-delay: 0.5s; }
+.right-2 { animation-duration: 6.5s; animation-delay: 1.2s; }
+
+@keyframes sway {
+  0%   { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
 }
