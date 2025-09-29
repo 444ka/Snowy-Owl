@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'roca';
-    src: url("./fonts/Roca-font/Roca Heavy.ttf");
+    src: url("./fonts/Roca-font/Roca Two Heavy.ttf");
 
 }
 
@@ -27,8 +27,8 @@ h1 { /* Main title - Snowy Owls*/
     font-size: 200px;
     line-height: 0.65;
     color: #f8f8f3;
-    text-shadow: #05070a 3px 3px 0px;
-    letter-spacing: -10px;
+    /* text-shadow: #05070a 3px 3px 0px; */
+    letter-spacing: -12px;
     align-self: center;
 }
 
@@ -122,6 +122,14 @@ button {
 .fun-fact-diurnal h2 { font-size: 150px;}
  
 
+/* Owl SVG */
+#hero-owl {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    left:5%;
+}
+
 /* Tree styles and animation */
 .trees {
   position: absolute;
@@ -138,7 +146,7 @@ button {
 }
 
 /* Place each tree differently */
-.left-1 { height: 550px; left: -5%; }
+.left-1 { height: 550px; left: -5%;}
 .left-2 { left: 10%; }
 .right-1 { height: 400px; right: 10%; }
 .right-2 { height: 700px; right: -5%; }
