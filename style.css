@@ -1,26 +1,73 @@
+/* ---- Font Imports ----- */
 @font-face {
     font-family: 'roca';
     src: url("./fonts/Roca-font/Roca Two Heavy.ttf");
 
 }
 
+/* ---- General Styles ----- */
 * {
     margin: 0;
     padding: 0;
     border: 1px red solid; /* For debugging layout */
 }
 
-.intro, .fun-fact-wings, .fun-fact-eyes, .fun-fact-diurnal {
+/* Section padding and text alignment */
+.intro, .fun-fact-wings, .fun-fact-eyes, .fun-fact-diurnal, .fun-fact-tundra, .fun-fact-map, .fun-fact-feet, .cards, .quiz {
     padding: 50vh;
     text-align: center;
 }
 
-h1, h2 { /* Titles */
+h1, h2 {
     font-family: 'roca', sans-serif;
     font-size: 100px;
     letter-spacing: -7px;
     line-height: 0.8;
     text-align: center;
+}
+
+h3, h4 { /* Section titles */
+    font-size: 50px;
+    font-family: 'Lora', sans-serif;
+}
+
+p { /* Subtitles */
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* General button styling */
+button {
+    font-family: 'Lora', monospace;
+    background-color: #dbd098;
+    color: #f8f8f3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ---- Hero Section ----- */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #39455a;
+    text-align: center;
+    background-image: url('./images/hero.jpg');
+    background-size:  cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    background-position: right; /* Adjust horizontal position to postion moon under title */
+    height: 150vh; 
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 100px;
 }
 
 h1 { /* Main title - Snowy Owls*/
@@ -32,52 +79,17 @@ h1 { /* Main title - Snowy Owls*/
     align-self: center;
 }
 
-h3, h4 {
-    font-size: 50px;
-    font-family: 'Lora', sans-serif;
-}
-
-.intro h3 { /* Intro title - Explore the  */
-    color: #a2aab8;
-}
-
-p {
-    font-family: 'JetBrains Mono', monospace;
-}
-
-button {
-    font-family: 'Lora', monospace;
-    background-color: #dbd098;
-    color: #f8f8f3;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-.hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #39455a;
-    text-align: center;
-    background-image: url('./images/hero.jpg');
-    background-size:  cover; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
-    background-position: right 10%; /* Adjust horizontal position to postion moon under title */
-    height: 150vh; 
-}
-
-.fun-fact-eyes, .fun-fact-diurnal {
-    background-color: #05070a;
-    color: #dbd098;;
-}
-
 .hero-text p{
     color: #a2aab8;
     font-size: 24px;
     font-weight: bold;
+}
+
+/* ---- Explore Scroll ----- */
+#arrow-down {
+    translate: 0 -10px;
+    animation: bounce 2s infinite; /* Apply bounce animation */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 211, 0.855)); /* Yellow glow effect */
 }
 
 .explore-scroll h3{
@@ -86,12 +98,7 @@ button {
     text-shadow: 0 0 5px rgb(255, 242, 176) /* Yellow glow effect */;
 }
 
-#arrow-down {
-    translate: 0 -10px;
-    animation: bounce 2s infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 211, 0.855)); /* Yellow glow effect */
-}
-
+/* Bounce animation for arrow */
 @keyframes bounce {
     0%, 100% {
         transform: translateY(0);
@@ -100,29 +107,53 @@ button {
         transform: translateY(-10px);
     }
 }
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 100px;
-    margin-bottom: 100px;
+
+/* ---- Intro/transition ("Lets explore the magic of the artic night...") Section ----- */
+.intro h3 { /* Intro title - Explore the  */
+    color: #a2aab8;
 }
-/* Fun fact section - Wingspan */
+
+/* ---- Fun-fact 1: Wingspan ("The snowy owl is a ... Silent Hunter") Section ---- */
 .fun-fact-wings p { 
     color: #c3cad2;
     font-size: 30px;
 }
 .fun-fact-wings h2 { color: #2d3540;}
-/* Fun fact section - Diurnal */
+
+/* ---- Fun-fact 2: Eyes ("Bright Yellow eyes ... perfect for spotting prey") Section ---- */
 .fun-fact-diurnal .text-group {
     color: #737b83;
 }
 
+/* ---- Fun-fact 3: Diurnal ("Snowy owls are ... Diurnal") Section ---- */
 .fun-fact-diurnal h4 { font-size: 25px;}
 .fun-fact-diurnal h2 { font-size: 150px;}
- 
 
-/* Owl SVG */
+ .fun-fact-eyes, .fun-fact-diurnal {
+    background-color: #05070a;
+    color: #dbd098;;
+}
+
+/* ---- Fun-fact 4: Tundra ("They live in the Artic Tundra") Section ---- */
+.fun-fact-tundra {
+    background-color: #b8c2cd;
+    color: #f8f8f3;
+}
+.fun-fact-tundra h3, p {
+    color: #4c5460;
+}
+/* ---- Fun-fact 5: Snowy owls can be found in ... ---- */
+.fun-fact-map {
+    background-color: #c3cad2;
+    color: #4c5460;
+}
+
+/* ---- Fun-fact 6: Feet ("Snowy owls have feathered feet") Section ---- */
+.fun-fact-feet {
+    background-color: #b4b6ba;
+    color: #f5fcfd;
+}
+/* ---- Owl SVG ----- */
 #hero-owl {
     width: 300px;
     height: auto;
@@ -130,7 +161,7 @@ button {
     left:5%;
 }
 
-/* Tree styles and animation */
+/* ---- SVG Trees styles & animation ---- */
 .trees {
   position: absolute;
   bottom: -100px;
@@ -157,6 +188,7 @@ button {
 .right-1 { animation-duration: 7s; animation-delay: 0.5s; }
 .right-2 { animation-duration: 6.5s; animation-delay: 1.2s; }
 
+/* Sway animation */
 @keyframes sway {
   0%   { transform: rotate(-2deg); }
   100% { transform: rotate(2deg); }
