@@ -95,3 +95,5 @@ animateText(document.querySelector(".fun-fact-tundra h2")); // Fun Fact 4
 animateText(document.querySelector(".fun-fact-map h3")); // Fun Fact 5
 animateText(document.querySelector(".fun-fact-feet h2")); // Fun Fact 6
 animateText(document.querySelector(".quiz .text-group h2")); // Quiz section
+
+// Diurnal section transition
