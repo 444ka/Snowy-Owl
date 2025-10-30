@@ -35,17 +35,18 @@ function animateFeather(el) {
     
     gsap.to(el, {
         motionPath: [
-            {x: gsap.utils.random(0, window.innerWidth), y: gsap.utils.random(50, 150)}, 
-            {x: gsap.utils.random(0, window.innerWidth), y: gsap.utils.random(150, 300)}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 2}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 4}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 6}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 8}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 10}],
         y: document.body.scrollHeight + 200,
-        duration: gsap.utils.random(30, 40), // Random duration for varied speeds
+        duration: gsap.utils.random(40, 60), // Random duration for varied speeds
         onComplete: () => {
             resetFeather(el); // Reset position and properties
             animateFeather(el); // Restart animation
         },
-        
-        
+    
         rotation: 360, // Full rotation
         transformOrigin: "left center",
         ease: "none", // Constant speed
@@ -100,11 +101,26 @@ animateText(document.querySelector(".fun-fact-tundra h2")); // Fun Fact 4
 animateText(document.querySelector(".fun-fact-map h3")); // Fun Fact 5
 animateText(document.querySelector(".fun-fact-feet h2")); // Fun Fact 6
 animateText(document.querySelector(".quiz .text-group h2")); // Quiz section
+animateText(document.querySelector(".cards p")); 
+
+const wingsBtn = document.querySelector("#wings-btn");
+const flightDialog = document.querySelector("#flight-dialog");
+wingsBtn.addEventListener('click', () => {
+     flightDialog.show(); // opens the Shoelace dialog
+});
 
 // Diurnal section transition
-const section = document.querySelector('.fun-fact-diurnal');
+const section = document.querySelector(".fun-fact-diurnal");
 const button = document.querySelector('#interact-btn');
 
 button.addEventListener('click', () => {
     section.classList.toggle('active');
+});
+
+const cards = document.querySelectorAll('.flip-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+  });
 });

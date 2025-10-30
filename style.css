@@ -9,8 +9,7 @@
 * {
     margin: 0;
     padding: 0;
-    /* border: 1px red solid; /* For debugging layout */
-    border: 1px solid #b60000; 
+
 }
 body {
     overflow-x: hidden; /* Prevent horizontal scroll */
@@ -24,11 +23,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-top: rgb(0, 123, 255) 5px solid;
 }
 
 h1, h2 {
-    font-family: 'roca', sans-serif;
+    font-family: 'roca', 'Lora';
     font-size: 100px;
     letter-spacing: -7px;
     line-height: 0.8;
@@ -42,6 +40,8 @@ h3, h4 { /* Section titles */
 
 p { /* Subtitles */
     font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5em;
+
 }
 
 /* General button styling */
@@ -54,6 +54,23 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+}
+/* Interactive button styles */
+.interact { 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #dbd098;
+    margin: 30px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    position: absolute;
+    right: -75px;
+;
+}
+.interact:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 211, 0.855)); /* Yellow glow effect */
 }
 
 /* ---- Hero Section ----- */
@@ -133,7 +150,7 @@ h1 { /* Main title - Snowy Owls*/
 
 /* Place each tree differently */
 .left-1 { height: 550px; left: -5%;}
-.left-2 { left: 10%; }
+.left-2 { height: 400px; left: 10%; }
 .right-1 { height: 400px; right: 10%; }
 .right-2 { height: 700px; right: -5%; }
 
@@ -160,22 +177,30 @@ h1 { /* Main title - Snowy Owls*/
     background-position: center; /* Center the image */
     background-position: right; /* Adjust horizontal position to postion moon under title */
 }
+
+.intro .text-group {
+    max-width: 700px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
 /* Feather image styles */
 .feather {
-      position: absolute;
-      width: 100px;
-      height: 200px;
-      background-image: url('images/feather.png'); /* Replace with your feather image */
-      background-size: contain;
-      background-repeat: no-repeat;
-      transform-origin: center;
-      z-index: 100;
-    }
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    background-image: url('images/feather.png'); /* Replace with your feather image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform-origin: center;
+    z-index: 100;
+      
+}
 
 /* ---- Fun-fact 1: Wingspan ("The snowy owl is a ... Silent Hunter") Section ---- */
 #owl-wings img { 
-    height: 1000px;
-    z-index: 10; /* Ensure it appears above other elements */
+    height: 50em;
+    animation: sway 1.5s ease-in-out infinite alternate;
 }
 
 .fun-fact-wings p { 
@@ -183,25 +208,32 @@ h1 { /* Main title - Snowy Owls*/
     font-size: 30px;
 }
 .fun-fact-wings h2 { color: #2d3540;}
+
 .fun-fact-wings .text-group {
-    position: absolute;
+    max-width: 700px;
+    text-align: left;
+    color: #2d3540;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
     z-index: 100;
-    right: 5%;
-    justify-self: center;
-    text-align: justify;
 }
+
 
 .fun-fact-wings .container {
     position: relative;
 }
 
 .fun-fact-wings {
-    background-image: url(images/wings-mountains.png);
-    background-size:  auto; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
-    background-position: right; /* Adjust horizontal position to postion moon under title */
-    position: relative;
     padding: 0;
+    background-image: url(images/wings-mountains.png);
+    background-size: cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    position: relative;
+    padding-top: 200px;
+    max-height: 100vh;
 }
 .fun-fact-wings .mountain-range{
     position: absolute;
@@ -211,6 +243,17 @@ h1 { /* Main title - Snowy Owls*/
     translate: 0 300px;
 }
 
+sl-dialog::part(panel) {
+  background: #3d4150;
+  color: white;
+  border-radius: 20px;
+}
+
+sl-carousel::part(base) {
+  overflow: hidden;
+}
+
+
 /* ---- Fun-fact 2: Eyes ("Bright Yellow eyes ... perfect for spotting prey") Section ---- */
 
 #owl-eyes img{
@@ -218,7 +261,7 @@ h1 { /* Main title - Snowy Owls*/
     height: auto;
     position: absolute;
     z-index: 10;
-    translate: 0 -340px;
+    translate: 0 -200px;
     right: 0;
 }
 #eyes-btn {
@@ -259,8 +302,9 @@ h1 { /* Main title - Snowy Owls*/
 .right {
     height: 700px;
     right: -10%;
-    translate: 0 -400px;
+    translate: 0 -100px;
     transform-origin: bottom center;
+    z-index: 10;
 }
 
 /* ---- Fun-fact 3: Diurnal ("Snowy owls are ... Diurnal") Section ---- */
@@ -284,28 +328,10 @@ h1 { /* Main title - Snowy Owls*/
     margin-bottom: 20px;
     position: relative;
 }
-/* Interactive button styles */
-.interact { 
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #dbd098;
-    margin: 30px auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    z-index: 999;
-    position: absolute;
-    right: -75px;
-;
-}
-.interact:hover {
-    transform: scale(1.5);
-    box-shadow: 0 0 15px #dbd098;
-}
 
 /* When toggled */
 .fun-fact-diurnal.active {
-    background-color: #b8c2cd;
+    background-color: #98a5b1;
     color: #ffffff;
 }
 
@@ -322,8 +348,8 @@ h1 { /* Main title - Snowy Owls*/
 }
 /* ---- Fun-fact 4: Tundra ("They live in the Artic Tundra") Section ---- */
 .fun-fact-tundra {
-    background-color: #b8c2cd;
-    background-image: url(images/owl-tundra.png);
+    background-color: #98a5b1;
+    background-image: url();
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     background-position: right; /* Adjust horizontal position to postion moon under title */
@@ -341,10 +367,10 @@ h1 { /* Main title - Snowy Owls*/
 /* ---- Fun-fact 6: Feet ("Snowy owls have feathered feet") Section ---- */
 .fun-fact-feet {
     background-color: #b4b6ba;
-     background-image: url(images/feathers-background.png);
+    background-image: url(images/feathers-background.png);
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
-    background-position: right; /* Adjust horizontal position to postion moon under title */
+
 
     color: #f5fcfd;
 }
@@ -358,11 +384,83 @@ h1 { /* Main title - Snowy Owls*/
 
 /* ---- cards Section ----- */
 .cards {
-    background-image: url(images/cards-background.png);
-    background-size:  cover; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
-    background-position: right; /* Adjust horizontal position to postion moon under title */
-    display: flex;
-    justify-content: flex-end;
+  background-image: url(images/cards-background.png);
+  background-size: cover; /* makes image fill the section */
+  background-position: center center; /* center both horizontally and vertically */
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centers the cards vertically */
+  min-height: 100vh; /* ensures section fills the screen */
+  width: 100%;
+  position: relative;
+  padding: 2rem 0;
 }
+
+.card-container {
+  display: flex;
+  gap: 6rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-self: center
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 400px; 
+  height: 500px; 
+  cursor: pointer; 
+} 
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s; 
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #4c5460;
+}
+
+.card-back img{
+    width: 20rem;
+    border-radius: 20px;
+
+}
+.card-back {
+  transform: rotateY(180deg);
+  background: #4c5460;
+}
+
+.cards .text-group {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 /* ---- Quiz Section ----- */
+.quiz h2 {
+    color: #4c5460;
+}
