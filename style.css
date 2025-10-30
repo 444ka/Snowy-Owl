@@ -24,6 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-top: rgb(0, 123, 255) 5px solid;
 }
 
 h1, h2 {
@@ -122,12 +123,12 @@ h1 { /* Main title - Snowy Owls*/
   bottom: -100px;
   width: 100%;
 }
+
 .hero-tree {
   position: absolute;
   bottom: 0;
-  height: 250px;
   transform-origin: bottom center; /* so they sway from the trunk */
-  animation: sway 5s ease-in-out infinite alternate;
+  animation: sway 5s ease-in-out infinite alternate; /* Sway animation */
 }
 
 /* Place each tree differently */
@@ -138,9 +139,9 @@ h1 { /* Main title - Snowy Owls*/
 
 /* Slightly different timings for realism */
 .left-1 { animation-duration: 6s; }
-.left-2 { animation-duration: 5s; animation-delay: 1s; }
-.right-1 { animation-duration: 7s; animation-delay: 0.5s; }
-.right-2 { animation-duration: 6.5s; animation-delay: 1.2s; }
+.left-2 { animation-duration: 5s; }
+.right-1 { animation-duration: 7s; }
+.right-2 { animation-duration: 6.5s; }
 
 /* Sway animation */
 @keyframes sway {
@@ -168,21 +169,31 @@ h1 { /* Main title - Snowy Owls*/
       background-size: contain;
       background-repeat: no-repeat;
       transform-origin: center;
+      z-index: 100;
     }
 
 /* ---- Fun-fact 1: Wingspan ("The snowy owl is a ... Silent Hunter") Section ---- */
-#owl-wings img {
-    
+#owl-wings img { 
     height: 1000px;
     z-index: 10; /* Ensure it appears above other elements */
 }
 
 .fun-fact-wings p { 
-    
     color: #c3cad2;
     font-size: 30px;
 }
 .fun-fact-wings h2 { color: #2d3540;}
+.fun-fact-wings .text-group {
+    position: absolute;
+    z-index: 100;
+    right: 5%;
+    justify-self: center;
+    text-align: justify;
+}
+
+.fun-fact-wings .container {
+    position: relative;
+}
 
 .fun-fact-wings {
     background-image: url(images/wings-mountains.png);
@@ -226,37 +237,73 @@ h1 { /* Main title - Snowy Owls*/
 .eyes-tree {
     position: absolute;
     z-index: 1;
+    animation: sway 5s ease-in-out infinite alternate; /* Sway animation */
 }
 .left {
     height: 1750px;
     left: -10%;
     translate: 0 -700px;
+    transform-origin: left;
 }
 .left-2 {
     height: 1500px;
     left: -20%;
     translate: 0 -500px;
+    transform-origin: bottom right; 
 }
 .right {
     height: 700px;
     right: -10%;
     translate: 0 -400px;
+    transform-origin: bottom center;
 }
 
 /* ---- Fun-fact 3: Diurnal ("Snowy owls are ... Diurnal") Section ---- */
 .fun-fact-diurnal h4 { font-size: 25px;}
 .fun-fact-diurnal h2 { font-size: 150px;}
-
+.fun-fact-diurnal p { opacity: 0; }
 .fun-fact-diurnal {
     background-color: #05070a;
     color: #dbd098;;
+    position: relative;
+    z-index: 20; /* higher than .eyes-tree (which is z-index:1) */
 }
 .fun-fact-diurnal .text-group{
     color: #737b83;
-    z-index: 10;
+ 
 }
-.fun-fact-diurnal  h2{
-    z-index: 10;
+
+/* Interactive button styles */
+.interact { 
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #dbd098;
+  margin: 30px auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+.interact:hover {
+  transform: scale(1.1);
+}
+
+/* When toggled */
+.fun-fact-diurnal.active {
+  background-color: #b8c2cd;
+  color: #ffffff;
+}
+
+.fun-fact-diurnal.active h4{
+  opacity: 0;
+}
+
+.fun-fact-diurnal.active h3{
+    color: #4c5460;
+}
+
+.fun-fact-diurnal.active p {
+  opacity: 1;
 }
 /* ---- Fun-fact 4: Tundra ("They live in the Artic Tundra") Section ---- */
 .fun-fact-tundra {

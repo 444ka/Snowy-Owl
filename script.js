@@ -1,34 +1,29 @@
 // GSAP Animation plugins
 gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger plugin
 gsap.registerPlugin(SplitText);  // Register SplitText plugin
+gsap.registerPlugin(MotionPathPlugin); // Register MotionPath plugin
 
 // Feather falling animation
-const feather1 = document.querySelector('#feather-1');
-const feather2 = document.querySelector('#feather-2');
-const feather3 = document.querySelector('#feather-3');
+const feathers = [
+    document.querySelector('#feather-1'),
+    document.querySelector('#feather-2'),
+    document.querySelector('#feather-3')
+];
 
-// Set initial position
-gsap.set(feather1, {
-    x: window.innerWidth / 2,
-    y: -500,
-    scale: 1.5
+// Initial setup
+feathers.forEach((feather) => {
+    resetFeather(feather);
+    animateFeather(feather);
 });
 
-gsap.set(feather2, {
-    x: 100,
-    y: -600,
-    scale: 1.2
-});
-
-gsap.set(feather3, {
-    x: -200,
-    y: -700,
-    scale: 1.0
-});
-// Start animations
-animateFeather(feather1);
-animateFeather(feather2);
-animateFeather(feather3);
+function resetFeather(el) {
+    gsap.set(el, {
+        x: gsap.utils.random(0, window.innerWidth), // start at random horizontal position
+        y: gsap.utils.random(-600, -300), // slightly off-screen above
+        scale: gsap.utils.random(0.1, 1.6), // varied feather sizes
+        rotation: gsap.utils.random(-30, 30) // slight initial tilt
+    });
+}
 
 // TODO: Adjust animation for each feather, maybe add variations in speed and path using bezier 
 
@@ -37,14 +32,19 @@ animateFeather(feather3);
 // Parameters: el - DOM element to animate
 // Returns: None
 function animateFeather(el) {
-  gsap.to(el, {
-    duration: 10, 
-    y: window.innerHeight + 1000, // Moves from the top to beyond the section
-    x: '+=300', // Slight horizontal movement
-    rotation: 360, // Full rotation
-    transformOrigin: "left center",
-    ease: "none", // Constant speed
-    repeat: -1, // Repeat
+    
+    gsap.to(el, {
+        motionPath: [
+            {x: gsap.utils.random(50, 150), y: gsap.utils.random(50, 150)}, 
+            {x: gsap.utils.random(0, 300), y: gsap.utils.random(150, 300)}, 
+            {x: gsap.utils.random(300, 450), y: gsap.utils.random(300, 450)}],
+        duration: 10, 
+        y: window.innerHeight + 1000, // Moves from the top to beyond the section
+        
+        rotation: 360, // Full rotation
+        transformOrigin: "left center",
+        ease: "none", // Constant speed
+        repeat: -1, // Repeat
 
 });
 }
@@ -97,3 +97,9 @@ animateText(document.querySelector(".fun-fact-feet h2")); // Fun Fact 6
 animateText(document.querySelector(".quiz .text-group h2")); // Quiz section
 
 // Diurnal section transition
+const section = document.querySelector('.fun-fact-diurnal');
+const button = document.querySelector('#interact-btn');
+
+button.addEventListener('click', () => {
+    section.classList.toggle('active');
+});
