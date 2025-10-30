@@ -26,8 +26,10 @@
     
 </head>
 <body>
+    <!------------------------------------------------HERO---------------------------------------------------------->
     <section class="hero">
         <div class="hero-content">
+            <!----------------SNOWY OWLS TITLE------------------->
             <div class="hero-text"> 
                 <p>MEET THE</p>
                 <h1>Snowy <br>  Owl</h1>
@@ -36,7 +38,7 @@
             <div class="explore-scroll">
                 <h3>START EXLPORING</h3>
                 
-                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                <!-------------------ARROW SVG-------------------->
                 <svg id="arrow-down" width="100px" height="100px" viewBox="0 0 24 24" fill="#dbd098" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_429_11251)">
                         <path d="M7 10L12 15" stroke="#dbd098" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -95,6 +97,7 @@
     <div class="feather" id="feather-1"></div>
     <div class="feather" id="feather-2"></div>
     <div class="feather" id="feather-3"></div>
+
     <!------------------------------------------------------------------------->
     <section class="intro">
         
@@ -124,7 +127,12 @@
 
     <!---------------------------------EYES---------------------------------------->
     <section class="fun-fact-eyes">
-        <div id="owl-eyes"> <img src="images/owl-eyes.png" alt="Snowy Owl Eyes"> </div>
+        <div id="owl-eyes"> 
+            <img src="images/owl-eyes.png" alt="Snowy Owl Eyes">
+            <sl-animation name="heartBeat" duration="2000" play> <!--- shoelace animation -->
+                <div class="interact" id="eyes-btn"> </div> <!--interactive button element-->
+             </sl-animation>
+        </div>
 
         <svg class="eyes-tree right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225.82 388.22"> 
             <g transform="translate(-562.99 -18.401)"> 
@@ -157,8 +165,13 @@
             <h4>Unlike most owls that are nocturnal,</h4>
             <h3>snowy owls are...</h3>
         </div>
-        <h2>Diurnal</h2>
-        <div class="interact" id="interact-btn"> </div> <!--interactive button element-->
+        <div id="diurnal-heading">
+            <h2>Diurnal</h2>
+             <sl-animation name="heartBeat" duration="2000" play> <!--- shoelace animation -->
+                <div class="interact" id="interact-btn"> </div> <!--interactive button element-->
+             </sl-animation>
+        </div>
+
         <p>Meaning active during the day</p>
     </section>
 

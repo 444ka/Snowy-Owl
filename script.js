@@ -7,7 +7,7 @@ gsap.registerPlugin(MotionPathPlugin); // Register MotionPath plugin
 const feathers = [
     document.querySelector('#feather-1'),
     document.querySelector('#feather-2'),
-    document.querySelector('#feather-3')
+    document.querySelector('#feather-3'),
 ];
 
 // Initial setup
@@ -19,8 +19,8 @@ feathers.forEach((feather) => {
 function resetFeather(el) {
     gsap.set(el, {
         x: gsap.utils.random(0, window.innerWidth), // start at random horizontal position
-        y: gsap.utils.random(-600, -300), // slightly off-screen above
-        scale: gsap.utils.random(0.1, 1.6), // varied feather sizes
+        y: gsap.utils.random(-200, -300), // slightly off-screen above
+        scale: gsap.utils.random(0.6, 1.6), // varied feather sizes
         rotation: gsap.utils.random(-30, 30) // slight initial tilt
     });
 }
@@ -35,11 +35,16 @@ function animateFeather(el) {
     
     gsap.to(el, {
         motionPath: [
-            {x: gsap.utils.random(50, 150), y: gsap.utils.random(50, 150)}, 
-            {x: gsap.utils.random(0, 300), y: gsap.utils.random(150, 300)}, 
-            {x: gsap.utils.random(300, 450), y: gsap.utils.random(300, 450)}],
-        duration: 10, 
-        y: window.innerHeight + 1000, // Moves from the top to beyond the section
+            {x: gsap.utils.random(0, window.innerWidth), y: gsap.utils.random(50, 150)}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: gsap.utils.random(150, 300)}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 10}],
+        y: document.body.scrollHeight + 200,
+        duration: gsap.utils.random(30, 40), // Random duration for varied speeds
+        onComplete: () => {
+            resetFeather(el); // Reset position and properties
+            animateFeather(el); // Restart animation
+        },
+        
         
         rotation: 360, // Full rotation
         transformOrigin: "left center",

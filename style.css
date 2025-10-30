@@ -221,6 +221,11 @@ h1 { /* Main title - Snowy Owls*/
     translate: 0 -340px;
     right: 0;
 }
+#eyes-btn {
+  display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+}
 .fun-fact-eyes {
     background-color: #3d4150;
     color: #dbd098;;
@@ -273,29 +278,39 @@ h1 { /* Main title - Snowy Owls*/
  
 }
 
+#diurnal-heading {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+    position: relative;
+}
 /* Interactive button styles */
 .interact { 
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: #dbd098;
-  margin: 30px auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  z-index: 999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #dbd098;
+    margin: 30px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    position: absolute;
+    right: -75px;
+;
 }
 .interact:hover {
-  transform: scale(1.1);
+    transform: scale(1.5);
+    box-shadow: 0 0 15px #dbd098;
 }
 
 /* When toggled */
 .fun-fact-diurnal.active {
-  background-color: #b8c2cd;
-  color: #ffffff;
+    background-color: #b8c2cd;
+    color: #ffffff;
 }
 
 .fun-fact-diurnal.active h4{
-  opacity: 0;
+    opacity: 0;
 }
 
 .fun-fact-diurnal.active h3{
@@ -303,7 +318,7 @@ h1 { /* Main title - Snowy Owls*/
 }
 
 .fun-fact-diurnal.active p {
-  opacity: 1;
+    opacity: 1;
 }
 /* ---- Fun-fact 4: Tundra ("They live in the Artic Tundra") Section ---- */
 .fun-fact-tundra {
@@ -326,6 +341,11 @@ h1 { /* Main title - Snowy Owls*/
 /* ---- Fun-fact 6: Feet ("Snowy owls have feathered feet") Section ---- */
 .fun-fact-feet {
     background-color: #b4b6ba;
+     background-image: url(images/feathers-background.png);
+    background-size:  cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    background-position: right; /* Adjust horizontal position to postion moon under title */
+
     color: #f5fcfd;
 }
 /* ---- Owl SVG ----- */
@@ -335,3 +355,14 @@ h1 { /* Main title - Snowy Owls*/
     position: absolute;
     left:5%;
 }
+
+/* ---- cards Section ----- */
+.cards {
+    background-image: url(images/cards-background.png);
+    background-size:  cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    background-position: right; /* Adjust horizontal position to postion moon under title */
+    display: flex;
+    justify-content: flex-end;
+}
+/* ---- Quiz Section ----- */
