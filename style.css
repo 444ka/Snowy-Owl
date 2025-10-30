@@ -81,7 +81,7 @@ button {
     align-items: center;
     background-color: #39455a;
     text-align: center;
-    background-image: url('./images/hero.jpg');
+    background-image: url('./images/background/hero.jpg');
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     background-position: right; /* Adjust horizontal position to postion moon under title */
@@ -150,13 +150,11 @@ h1 { /* Main title - Snowy Owls*/
 
 /* Place each tree differently */
 .left-1 { height: 550px; left: -5%;}
-.left-2 { height: 400px; left: 10%; }
 .right-1 { height: 400px; right: 10%; }
 .right-2 { height: 700px; right: -5%; }
 
 /* Slightly different timings for realism */
 .left-1 { animation-duration: 6s; }
-.left-2 { animation-duration: 5s; }
 .right-1 { animation-duration: 7s; }
 .right-2 { animation-duration: 6.5s; }
 
@@ -172,7 +170,7 @@ h1 { /* Main title - Snowy Owls*/
 }
 
 .intro {
-    background-image: url(images/intro-mountains.png);
+    background-image: url(images/background/intro-mountains.png);
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     background-position: right; /* Adjust horizontal position to postion moon under title */
@@ -189,12 +187,11 @@ h1 { /* Main title - Snowy Owls*/
     position: absolute;
     width: 100px;
     height: 200px;
-    background-image: url('images/feather.png'); /* Replace with your feather image */
+    background-image: url('images/feather.png'); 
     background-size: contain;
     background-repeat: no-repeat;
     transform-origin: center;
     z-index: 100;
-      
 }
 
 /* ---- Fun-fact 1: Wingspan ("The snowy owl is a ... Silent Hunter") Section ---- */
@@ -228,7 +225,7 @@ h1 { /* Main title - Snowy Owls*/
 
 .fun-fact-wings {
     padding: 0;
-    background-image: url(images/wings-mountains.png);
+    background-image: url(images/background/wings-mountains.png);
     background-size: cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     position: relative;
@@ -367,7 +364,7 @@ sl-carousel::part(base) {
 /* ---- Fun-fact 6: Feet ("Snowy owls have feathered feet") Section ---- */
 .fun-fact-feet {
     background-color: #b4b6ba;
-    background-image: url(images/feathers-background.png);
+    background-image: url(images/background/feathers-background.png);
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
 
@@ -384,7 +381,7 @@ sl-carousel::part(base) {
 
 /* ---- cards Section ----- */
 .cards {
-  background-image: url(images/cards-background.png);
+  background-image: url(images/background/cards-background.png);
   background-size: cover; /* makes image fill the section */
   background-position: center center; /* center both horizontally and vertically */
   background-repeat: no-repeat;
@@ -463,4 +460,16 @@ sl-carousel::part(base) {
 /* ---- Quiz Section ----- */
 .quiz h2 {
     color: #4c5460;
+}
+
+.quiz {
+    background-image: url(images/background/quiz-background.png);
+    background-size: cover; /* makes image fill the section */
+    background-position: center center; /* center both horizontally and vertically */
+    background-repeat: no-repeat;
+}
+
+#exclamation {
+    animation: bounce 1s infinite; /* Apply bounce animation */
+    height: 25px;
 }
