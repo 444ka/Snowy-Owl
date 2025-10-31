@@ -6,7 +6,7 @@
 
 /* ---- RESESTS -------------------------------------------------- */
 * { margin: 0; padding: 0;} /* Reset page padding and margins */
-body { overflow-x: hidden; /* Prevent horizontal scroll */ } 
+body { overflow-x: hidden;  /* Prevent horizontal scroll */ } 
 
 
 /* ---- ANIMATIONS ----------------------------------------------- */
@@ -45,6 +45,7 @@ body { overflow-x: hidden; /* Prevent horizontal scroll */ }
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 /* ---- General text and heading styling -------------------------- */
 h1, h2 {
@@ -76,7 +77,7 @@ button {
     font-size: 2em;
     cursor: pointer;
     letter-spacing: -0.5px;
-     animation: sway 5s ease-in-out infinite alternate;
+    animation: sway 3s ease-in-out infinite alternate;
     
 }
 /* ---- Hover effect for interactivty ---- */
@@ -131,7 +132,7 @@ sl-dialog {
 
 /* Main title - Snowy Owls*/
 h1 {
-    font-size: 200px;
+    font-size: 15rem;
     line-height: 0.65;
     color: #f8f8f3;
     letter-spacing: -12px;
@@ -157,7 +158,7 @@ h1 {
 }
 /* ---- Owl SVG --------------------------------------------------------- */
 #hero-owl {
-    width: 300px;
+    width: 20vw;
     height: auto;
     position: absolute;
     left:5%;
@@ -200,6 +201,15 @@ h1 {
     display: flex;
     flex-direction: column;
 }
+
+.intro .text-group {
+    width: 90%;         /* take 90% of the parent width */
+    max-width: 700px;   /* don't get too wide on large screens */
+    margin: 0 auto;     /* center horizontally */
+    display: flex;
+    flex-direction: column;
+}
+
 .intro h3 { color: #a2aab8; }/* Intro title - Explore the  */
 /* ================================== WINGS/SILENT HUNTER SECTION ======================================= */
 .fun-fact-wings p { 
@@ -258,10 +268,11 @@ h1 {
 
 /* --- Owl styling --- */
 #owl-wings img {
-    width: 70vw; /* Owl should be big */
+    width: 60vw; /* Owl should be big */
     animation: sway 2s ease-in-out infinite alternate;
     position: relative;
     translate: 10em;
+    z-index: 20;
 }
 
 /* --- Dialog styling --- */
@@ -269,13 +280,15 @@ sl-dialog::part(panel) {
     background: #f2f3f8;
     border-radius: 20px;
     border: 4px solid #98a5b1;
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
     overflow: hidden;
     z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
     
+}
+sl-dialog::part(close-button) {
+  display: none;
 }
 sl-dialog h2 {
     color: #98a5b1;
@@ -337,8 +350,10 @@ sl-carousel::part(pagination-item--active) {
     height: auto;
     position: absolute;
     z-index: 10;
-    translate: 0 -200px;
-    right: 0;
+    bottom: 0;
+    left:0;
+    translate: 30rem;
+
 }
 #eyes-btn {
     display: flex;
@@ -349,6 +364,8 @@ sl-carousel::part(pagination-item--active) {
 .fun-fact-eyes {
     background-color: #3d4150;
     color: #dbd098;
+    position: relative;
+    max-width: 100vw;
     
 }
 .fun-fact-eyes .text-group {
@@ -363,27 +380,26 @@ sl-carousel::part(pagination-item--active) {
 .eyes-tree {
     position: absolute;
     z-index: 1;
+    bottom: 0;
+    translate: 0 5rem;
     animation: sway 5s ease-in-out infinite alternate; /* Sway animation */
 }
 /* ---- individual tree size and positioning */
 .left { /* left most tree */
     width: 60vw;
     left: -10%;
-    translate: 0 -700px;
     transform-origin: left;
 }
 .left-2 { /* left tree */
     width: 60vw;
     left: -20%;
-    translate: 0 -500px;
     transform-origin: bottom right; 
 }
 .right { /* right tree */
     width: 30vw;
-    right: -10%;
-    translate: 0 -100px;
     transform-origin: bottom center;
-    z-index: 10;
+    translate: 15rem 5rem;
+    z-index: 2;
 }
 /* -------- EYES INFO DIALONG  --------------------------------------- */
 #eyes-dialog p{
@@ -396,25 +412,52 @@ sl-carousel::part(pagination-item--active) {
     background: #16181b;
     border-radius: 20px;
     border: 4px solid #000000;
-    box-shadow: 0 8px 30px rgba(248, 242, 180, 0.147);
     overflow: hidden;
 }
 /* ================================== DIURNAL / TOGGLE SECTION ======================================= */
+.fun-fact-diurnal {
+    position: relative;
+    z-index: 20;
+    background-color: #05070a;
+    color: #dbd098;
+    padding: 6rem 2rem;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
 #diurnal-heading {
     display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 20px;
+    flex-direction: row-reverse;  /* keep heading on the right on desktop */
+    align-items: center;
+    margin-bottom: 2rem;
     position: relative;
+    font-size: 2rem;
+    font-weight: 600;
 }
-.fun-fact-diurnal p { opacity: 0; } /* Toggle off in dark mode */
-.fun-fact-diurnal h4 { font-size: 25px;}
-.fun-fact-diurnal h2 { font-size: 150px;}
-.fun-fact-diurnal .text-group{ color: #737b83;}
-.fun-fact-diurnal {
-    background-color: #05070a;
-    color: #dbd098;;
-    position: relative;
-    z-index: 20; 
+
+.fun-fact-diurnal h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.fun-fact-diurnal h2 {
+    font-size: 8rem;  /* reduced from 150px for better scaling */
+    margin: 0;
+    line-height: 1;
+}
+
+.fun-fact-diurnal .text-group {
+    color: #737b83;
+    max-width: 700px;
+}
+
+/* Hide paragraph by default if needed, use class to toggle dynamically */
+.fun-fact-diurnal p {
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 /* -------- DIURNAL LIGHT TOGGLE --------------------------------------- */
 .fun-fact-diurnal.active { background-color: #98a5b1; color: #ffffff; } /* change colours when light toggled on */
@@ -423,30 +466,47 @@ sl-carousel::part(pagination-item--active) {
 .fun-fact-diurnal.active h3 { color: #4c5460; } /* increase readability in light mode */
 
 /* ================================== TUNDRA / HABITAT SECTION ======================================= */
+/* ================================== TUNDRA / HABITAT SECTION ======================================= */
 .fun-fact-tundra {
+    position: relative;
     background-color: #98a5b1;
     background-image: url(images/background/tundra-background.png);
-    background-size:  cover; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
-    background-position: right; /* Adjust horizontal position to postion moon under title */
+    background-size: cover; /* make it cover the section */
+    background-position: center right; /* center vertically, right horizontally */
     color: #f8f8f3;
+    padding: 4rem 2rem; /* add some spacing */
+    min-height: 80vh; /* ensure some height for the section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
 }
+
 #tundra-heading {
     display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 20px;
+    align-items: center;
+    margin-bottom: 1rem;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s;
 }
+
 #tundra-heading:hover {
     color: #cce4ff; /* fun interaction on heading */
 }
+
 .fun-fact-tundra h3 {
     color: #4c5460;
     text-align: left;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
 }
+
 .fun-fact-tundra .text-group p {
     text-align: left;
+
 }
 
 /* ---- MAP DIALOG ----------------------------------------------------------------------------- */
@@ -471,7 +531,16 @@ sl-carousel::part(pagination-item--active) {
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     color: #f5fcfd;
-    
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fun-fact-feet p{
+    background-color:  #f5fcfd;
+    color: #3d4150;
+    padding: 3rem;
+    margin-top: 2rem;
+    border-radius: 10px;
 }
 /* ================================== CARDS / MALE/FEMALE SECTION ================================== */
 .cards {
@@ -616,9 +685,9 @@ sl-carousel::part(pagination-item--active) {
     height: auto;
     display: block;
 }
-
-
-/* --------------- Quiz Dialog ------------------------------------- */
+/* ================================== QUIZ.HTML STYLING ================================== */
+/* ================================== QUIZ.HTML STYLING ================================== */
+/* ================================== QUIZ.HTML STYLING ================================== */
 .quiz-page {
     background-image: url(images/background/cards-background.png);
     background-size: cover;
@@ -626,73 +695,168 @@ sl-carousel::part(pagination-item--active) {
     background-repeat: no-repeat;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-family: "Poppins", sans-serif;
-    color: #2d3540;
+    justify-content: space-around;
+    color: #26272d;
 }
-
+.quiz-page h1 {
+    color: #3d444e;
+    font-size: 7rem;
+}
+/* --- Push return button to the left --- */
+#quiz-return {
+    display: flex;
+    justify-content: space-between;
+}
+.quiz-page .container { width: 80vw; }
 .quiz-card {
-    background: #737b83;
+    background: #697179;
     border-radius: 20px;
-    border: white solid 4px;
-    padding: 2rem 3rem;
-    max-width: 700px;
-    width: 70%;
+    padding: 4rem 3rem;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
     text-align: center;
 }
+#question { color: #ffffff; }
+.quiz-page p { font-size: 2rem; }
 
-.quiz-card h2 {
-    font-size: 2em;
-    letter-spacing: 0;
+.quiz-page .options {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.3em;
+    padding: 1em;
+}
+.option:hover {
+    color: #d1c588;
+    cursor: pointer;
+}
+#submit-btn:hover {
+    background-color: #d1c588;
+}
+#finish-dialog button {
+    font-size: 1em;
+    padding: 0.6em 1.2em;
+}
+ 
+/* =========== QUIZ ANSWER ALERT/DIALOG STYLES ====================================== */
+#correct-dialog::part(panel),
+#wrong-dialog::part(panel),
+#finish-dialog::part(panel) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
 }
 
-#quiz-dialog::part(panel) {
-    background-color: white;
-    background-image: url(images/background/cards-background.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Poppins", sans-serif;
-    color: #2d3540;
+#correct-dialog::part(panel) { background-color: #7dcf85;}
+#wrong-dialog::part(panel) { background-color: #e76f51; }
+#finish-dialog::part(panel) { background-color: #d1c588; }
+
+/* Return button inside finish dialog */
+#finish-dialog button {
+    background-color: #2d3540;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#finish-dialog button:hover { background-color: #1e242c; }
+
+/* Dialog text spacing */
+sl-dialog p {
+  margin: 0;
+  line-height: 1.5;
 }
 /* ================================== MEDIA QUERIES: RESPONSIVE DESIGN ================================== */
-@media (max-width: 768px) {
-  /* Styles for tablets and phones */
-
-  .container {
+@media (max-width: 768px) { /* Styles for tablets and phones */
+    /* ------ GENERAL CHANGES ------ */
+    h1, h2, h3, h4 { font-size: 3rem; letter-spacing: 0;}
+    p { font-size: 1rem;}
+    .container {
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-  .text-group {
-    max-width: 90%;
-    margin: 1em 0;
-  }
+    }
+    .text-group {
+        max-width: 90%;
+        margin: 1em 0;
+    }
 
-  button {
-    font-size: 1em;
-    padding: 0.6em 1.2em;
-  }
+    button {
+        font-size: 1em;
+        padding: 0.6em 1.2em;
+    }
 
-  img, svg {
-    max-width: 80%;
-    height: auto;
-  }
+    img, svg {
+        max-width: 80%;
+        height: auto;
+    }
+    .fun-fact-feet {
+        display: none;
+    }
+    /* -----------------------------------HERO---------------------------------------------*/
+    .hero h1 { font-size: 10rem; }
+    #hero-owl { display: none;}
+    .left-1 { display: none;}
+    .intro h3 {font-size: rem;}
+
+    #owl-wings {display: none;}
+    #owl-eyes {display: none;}
+    /* -----------------------------------DIURNAL---------------------------------------------*/
+    #diurnal-heading {
+        flex-direction: column;  /* stack heading and h2 vertically */
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .fun-fact-diurnal h2 { font-size: 4rem; }
+    .fun-fact-diurnal h4 { font-size: 1.2rem; }
+
+    .fun-fact-diurnal .text-group {
+        text-align: center;
+        max-width: 100%;
+    }
+     /* -----------------------------------TUNDRA---------------------------------------------*/
+    .fun-fact-tundra {
+        padding: 2rem 1rem;
+        min-height: 60vh;
+        background-position: center; /* center for smaller screens */
+    }
+
+    #tundra-heading {
+        flex-direction: column; /* stack heading above content */
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .fun-fact-tundra h3 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .fun-fact-tundra .text-group p {
+        text-align: center;
+    }
   /* -----------------------------------CARDS---------------------------------------------*/
   .cards svg{
     display: none;
   }
   /* -----------------------------------QUIZ---------------------------------------------*/
-  .quiz {
-    display: none;
-  }
 }

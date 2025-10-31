@@ -4,27 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snowy Owl Quiz</title>
+
+    <!-- Shoelace for web components -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Styling-->
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+
+    <!-- JavaScript -->
+    <script src="quiz.js" defer> </script>
+  
 </head>
 <body>
+  <!-- AUDIO! KAHOOT MUSIC -->
+  <audio type="audio/mp3" src="https://joeybabcock.me/blog/wp-content/uploads/2019/05/lobby-classic-game-halloween.mp3" autoplay loop></audio>
   <section class="quiz-page">
+    <!-------------RETURN BUTTON--------------------->
+    <div id="quiz-return">
+      <a href="index.html">  
+        <button> Return </button>
+      </a>
+      <div class="container"> </div>
+    </div>
+    <div class="quiz-header">
+      <h1>Snowy Owl Quiz</h1>
+    </div>
     <div class="quiz-card">
-      <div class="quiz-header">
-        <h1>Snowy Owl Quiz</h1>
-      </div>
-
       <div class="quiz-body">
-        <h2 id="question">Where do Snowy Owls live?</h2>
+        <!-------------QUESTION--------------------->
+        <p id="question"> <p>
+        <!-------------OPTIONS---------------------->
         <div class="options">
-          
+          <p class=option id="option-1">  </p>
+          <p class=option id="option-2">  </p>
+          <p class=option id="option-3">  </p>
         </div>
       </div>
 
       <div class="quiz-footer">
-        <button id="return-btn">Return</button>
+        <button id="submit-btn">Submit</button>
       </div>
     </div>
   </section>
+  <!------------------------- SHOELACE DIALOGS ------------------------->
+  <sl-dialog id="correct-dialog"> <!--CORRECT!-->
+    <p>You got it right!</p>
+  </sl-dialog>
+
+  <sl-dialog id="wrong-dialog">
+    <p>Oops! Not quite. Try Again!</p>  <!--WRONG!-->
+  </sl-dialog>
+
+  <sl-dialog id="finish-dialog">
+    <p> You’ve finished the quiz — great job!</p>  <!--FINISH!-->
+    <a href="index.html">  
+      <button> Return </button>
+    </a>
+  </sl-dialog>
+
 </body>
+
 </html>

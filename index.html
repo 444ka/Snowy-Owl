@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snowy Owls</title>
-    <link rel="stylesheet" href="style.css">
-
+   
     <!-- Shoelace for web components -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
@@ -14,13 +13,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
-
-     <!-- GSAP Animation Library -->
+     
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script> <!-- Core GSAP library -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script> <!-- GSAP ScrollTrigger plugin -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script> <!-- GSAP ScrollTo plugin -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js" defer></script> <!-- GSAP MotionPath plugin -->
+     
+    <!-- CSS Styling-->
+    <link rel="stylesheet" href="style.css">
+
     <!-- JavaScript -->
     <script src="script.js" defer></script>
 </head>
@@ -238,16 +239,23 @@
     <sl-dialog id="map-dialog" style="--width: 60vw; --height: auto;">
         <img src="images/map.png">
         <p>
-            Snowy owls can be found in the Arctic regions of North America, Europe, and Asia, where they breed on the tundra. In the winter, they migrate south to areas like southern Canada and the northern United States, and sometimes as far as the Caribbean, following food sources like lemmings. 
+            Snowy owls can be found in the Arctic regions of North America, Europe, 
+            and Asia, where they breed on the tundra. In the winter, they migrate 
+            south to areas like southern Canada and the northern United States, and 
+            sometimes as far as the Caribbean, following food sources like lemmings. 
         </p>
     </sl-dialog>
     <!------------------------------- FEATHRES/FEET SECTION ------------------------------------->
     <section class="fun-fact-feet">
-        <sl-animation name="heartBeat" duration="2000" play> <!--- shoelace animation -->
-                    <div class="interact" id="feathers-btn"> </div> <!--interactive button element-->
-        </sl-animation>
+        <div class="container"></div>
         <div class="text-group">
             <h2>Feathers <br> for feet!</h3>
+            <p> 
+                Snowy owls have large feet that are entirely covered in dense, thick,
+                white feathers, which serve as a crucial adaptation to their Arctic 
+                habitat. These unique "yeti boots" provide both insulation and functional 
+                benefits
+            </p>
         </div>
     </section>
 
@@ -318,27 +326,15 @@
                 </svg>
             </div>
 
-            <!-- Text + button -->
+            <!-- Text and button -->
             <div class="text-group">
             <h2>Let's test your <br>knowledge...</h2>
-            <button id="start-quiz">Start Quiz</button>
+            <!-- Link / button to quiz.html-->
+            <a href="quiz.html">     
+                <button id="start-quiz">Start Quiz</button>
+            </a>
             </div>
         </div>
     </section>
-    <!-------------------------- QUIZ DIALOG -------------------------------------------->
-    <sl-dialog id="quiz-dialog" style="--width: 70vw; --height: auto;">
-      <div class="quiz-card">
-      <div class="quiz-body">
-        <h2 id="question">Q: Where do Snowy Owls live?</h2>
-      </div>
-        <div class="options">
-            <p class="options" id="option-1"> </p>
-            <p class="options" id="option-2"> </p>
-            <p class="options" id="option-3"> </p>
-        </div>
-
-    </div>
-    </sl-dialog>
-
 </body>
 </html>

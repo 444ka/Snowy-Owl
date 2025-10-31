@@ -44,18 +44,13 @@ cards.forEach(card => {
   });
 });
 
-const quizBtn = document.querySelector("#start-quiz");
-const quizDialog = document.querySelector("#quiz-dialog");
-quizBtn.addEventListener("click", () => {
-    quizDialog.show(); // opens the Shoelace dialog
-});
 // ================== ANIMATIONS ====================================
 // ------- Feather falling animation ------------------------------
 // Array of feather elements
 const feathers = [
-    document.querySelector('#feather-1'),
-    document.querySelector('#feather-2'),
-    document.querySelector('#feather-3'),
+    document.querySelector("#feather-1"),
+    document.querySelector("#feather-2"),
+    document.querySelector("#feather-3"),
 ];
 
 // Initial setup of feathers
@@ -64,7 +59,7 @@ feathers.forEach((feather) => { // target each feather in the array
     animateFeather(feather);
 });
 
-// Name: reserFeather
+// Name: resetFeather
 // Desscription: Sets the intial postition of the feather randomly
 // Parameters: el - DOM element to animate
 // Returns: None
@@ -72,7 +67,7 @@ function resetFeather(el) {
     gsap.set(el, {
         x: gsap.utils.random(0, window.innerWidth), // start at random horizontal position
         y: gsap.utils.random(-200, -300), // slightly off-screen above
-        scale: gsap.utils.random(0.6, 1.6), // varied feather sizes
+        scale: gsap.utils.random(0.9, 1.6), // varied feather sizes
         rotation: gsap.utils.random(-30, 30) // slight initial tilt
     });
 }
@@ -94,7 +89,7 @@ function animateFeather(el) {
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 7}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 8}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 10}],
-        y: document.body.scrollHeight + 200,
+        y: document.body.scrollHeight + 50,
         duration: gsap.utils.random(40, 60), // Random duration for varied speeds
         onComplete: () => {
             resetFeather(el); // Reset position and properties
