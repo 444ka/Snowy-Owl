@@ -1,33 +1,55 @@
-/* ---- Font Imports ----- */
+/* ---- Font Imports --------------------------------------------- */
 @font-face {
     font-family: 'roca';
     src: url("./fonts/Roca-font/Roca Two Heavy.ttf");
-
 }
 
-/* ---- General Styles ----- */
-* {
-    margin: 0;
-    padding: 0;
+/* ---- RESESTS -------------------------------------------------- */
+* { margin: 0; padding: 0;} /* Reset page padding and margins */
+body { overflow-x: hidden; /* Prevent horizontal scroll */ } 
 
+
+/* ---- ANIMATIONS ----------------------------------------------- */
+/* Bounce animation for arrow & exclamation mark */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
-body {
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    cursor: url('path/to/your-cursor.png'), auto;
-} 
 
+/* Sway animation for trees and owl */
+@keyframes sway {
+  0%   { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
+}
+/* ---- FALLING FEATHERS  ----------------------------------------- */
+.feather {
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    background-image: url('images/feather.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform-origin: center;
+    z-index: 10000;
+}
+
+/* ---- General Styles ------------------------------------------- */
 /* Section padding and text alignment */
 .intro, .fun-fact-wings, .fun-fact-eyes, .fun-fact-diurnal, .fun-fact-tundra, .fun-fact-map, .fun-fact-feet, .cards, .quiz {
-    padding: 50vh;
+    padding: 50vh;  
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+/* ---- General text and heading styling -------------------------- */
 h1, h2 {
     font-family: 'roca', 'Lora';
-    font-size: 100px;
+    font-size: 6em;
     letter-spacing: -7px;
     line-height: 0.8;
     text-align: center;
@@ -41,39 +63,51 @@ h3, h4 { /* Section titles */
 p { /* Subtitles */
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.5em;
-
 }
 
-/* General button styling */
+/* ---- General button styling -------------------------------------- */
 button {
-    font-family: 'Lora', monospace;
+    font-family: 'Inter', monospace;
     background-color: #dbd098;
-    color: #f8f8f3;
+    color: #ffffff;
     border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+    border-radius: 50px;
+    padding: 20px 50px;
+    font-size: 2em;
     cursor: pointer;
+    letter-spacing: -0.5px;
+     animation: sway 5s ease-in-out infinite alternate;
+    
 }
-/* Interactive button styles */
+/* ---- Hover effect for interactivty ---- */
+button:hover {
+    animation: bounce 0.75s infinite;
+}
+
+/* ---- Interactive Circlular button styling -------------------------- */
 .interact { 
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #dbd098;
+    background-color: #d1c588;
     margin: 30px auto;
     cursor: pointer;
     transition: transform 0.3s ease;
-    z-index: 999;
+    z-index: 900;
     position: absolute;
     right: -75px;
-;
 }
+/* ---- Hover effect for interactivty ---- */
 .interact:hover {
     filter: drop-shadow(0 0 10px rgba(255, 255, 211, 0.855)); /* Yellow glow effect */
 }
 
-/* ---- Hero Section ----- */
+sl-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ================================== HERO SECTION =========================================== */
 .hero {
     display: flex;
     flex-direction: column;
@@ -81,9 +115,8 @@ button {
     align-items: center;
     background-color: #39455a;
     text-align: center;
-    background-image: url('./images/background/hero.jpg');
+    background-image: url('./images/background/hero.png');
     background-size:  cover; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
     background-position: right; /* Adjust horizontal position to postion moon under title */
     height: 150vh; 
 }
@@ -96,22 +129,21 @@ button {
     margin-bottom: 100px;
 }
 
-h1 { /* Main title - Snowy Owls*/
+/* Main title - Snowy Owls*/
+h1 {
     font-size: 200px;
     line-height: 0.65;
     color: #f8f8f3;
-    /* text-shadow: #05070a 3px 3px 0px; */
     letter-spacing: -12px;
     align-self: center;
 }
-
 .hero-text p{
     color: #a2aab8;
     font-size: 24px;
     font-weight: bold;
 }
 
-/* ---- Explore Scroll ----- */
+/* ---- Explore Scroll -------------------------------------------------- */
 #arrow-down {
     translate: 0 -10px;
     animation: bounce 2s infinite; /* Apply bounce animation */
@@ -123,52 +155,38 @@ h1 { /* Main title - Snowy Owls*/
     font-size: 30px;
     text-shadow: 0 0 5px rgb(255, 242, 176) /* Yellow glow effect */;
 }
-
-/* Bounce animation for arrow */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+/* ---- Owl SVG --------------------------------------------------------- */
+#hero-owl {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    left:5%;
 }
-
-/* ---- SVG Trees styles & animation ---- */
+/* ---- SVG Trees styles & animation ------------------------------------- */ 
 .hero .trees {
-  position: absolute;
-  bottom: -100px;
-  width: 100%;
+    position: absolute;
+    bottom: -100px;
+    width: 100%;
 }
 
 .hero-tree {
-  position: absolute;
-  bottom: 0;
-  transform-origin: bottom center; /* so they sway from the trunk */
-  animation: sway 5s ease-in-out infinite alternate; /* Sway animation */
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom center; /* so they sway from the trunk */
+    animation: sway 5s ease-in-out infinite alternate; /* Sway animation */
 }
 
 /* Place each tree differently */
-.left-1 { height: 550px; left: -5%;}
-.right-1 { height: 400px; right: 10%; }
-.right-2 { height: 700px; right: -5%; }
+.left-1 { width: 20vw; left: -5%;}
+.right-1 { width: 20vw; right: 10%; }
+.right-2 { width: 30vw; right: -5%; }
 
 /* Slightly different timings for realism */
 .left-1 { animation-duration: 6s; }
 .right-1 { animation-duration: 7s; }
 .right-2 { animation-duration: 6.5s; }
 
-/* Sway animation */
-@keyframes sway {
-  0%   { transform: rotate(-2deg); }
-  100% { transform: rotate(2deg); }
-}
-
-/* ---- Intro/transition ("Lets explore the magic of the artic night...") Section ----- */
-.intro h3 { /* Intro title - Explore the  */
-    color: #a2aab8;
-}
-
+/* ================================== INTRO/EXPLORE SECTION =========================================== */
 .intro {
     background-image: url(images/background/intro-mountains.png);
     background-size:  cover; /* Ensure the image covers the entire div */
@@ -182,32 +200,17 @@ h1 { /* Main title - Snowy Owls*/
     display: flex;
     flex-direction: column;
 }
-/* Feather image styles */
-.feather {
-    position: absolute;
-    width: 100px;
-    height: 200px;
-    background-image: url('images/feather.png'); 
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform-origin: center;
-    z-index: 100;
-}
-
-/* ---- Fun-fact 1: Wingspan ("The snowy owl is a ... Silent Hunter") Section ---- */
-#owl-wings img { 
-    height: 50em;
-    animation: sway 1.5s ease-in-out infinite alternate;
-}
-
+.intro h3 { color: #a2aab8; }/* Intro title - Explore the  */
+/* ================================== WINGS/SILENT HUNTER SECTION ======================================= */
 .fun-fact-wings p { 
     color: #c3cad2;
     font-size: 30px;
 }
+
 .fun-fact-wings h2 { color: #2d3540;}
 
+
 .fun-fact-wings .text-group {
-    max-width: 700px;
     text-align: left;
     color: #2d3540;
     display: flex;
@@ -218,43 +221,119 @@ h1 { /* Main title - Snowy Owls*/
     z-index: 100;
 }
 
-
 .fun-fact-wings .container {
     position: relative;
+    min-width: 50vw;
+    padding-right: 5em;
 }
 
 .fun-fact-wings {
+    flex-direction: row-reverse;
     padding: 0;
     background-image: url(images/background/wings-mountains.png);
     background-size: cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     position: relative;
-    padding-top: 200px;
+    padding-top: 100px;
     max-height: 100vh;
 }
-.fun-fact-wings .mountain-range{
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
+.mountain-range {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  translate: 0 300px;
+  z-index: 1;
+}
+
+.fun-fact-wings .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
     width: 100%;
-    translate: 0 300px;
+    max-width: 1400px;
+    position: relative; 
+    z-index: 10;
 }
 
+/* --- Owl styling --- */
+#owl-wings img {
+    width: 70vw; /* Owl should be big */
+    animation: sway 2s ease-in-out infinite alternate;
+    position: relative;
+    translate: 10em;
+}
+
+/* --- Dialog styling --- */
 sl-dialog::part(panel) {
-  background: #3d4150;
-  color: white;
-  border-radius: 20px;
+    background: #f2f3f8;
+    border-radius: 20px;
+    border: 4px solid #98a5b1;
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+sl-dialog h2 {
+    color: #98a5b1;
+    font-size: 5em;
+}
+sl-dialog p {
+    color: #484e53;
+    font-size: 1em;
+    padding:1em 5em 0;
 }
 
-sl-carousel::part(base) {
-  overflow: hidden;
+/* --- Carousel container --- */
+#flight-dialog sl-carousel {
+    width: 100%;
+    height: 75vh; /* large display */
 }
+/* --- Each slide --- */
+.carousel-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* --- Animated GIFs --- */
+.animated-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    border: #98a5b1 4px solid;
+}
+/* --- Caption text --- */
+.carousel-caption {
 
-
-/* ---- Fun-fact 2: Eyes ("Bright Yellow eyes ... perfect for spotting prey") Section ---- */
-
+    font-size: 1.1rem;
+    color: #98a5b1;
+    text-align: center;
+}
+/* --- Navigation button customization --- */
+sl-carousel::part(navigation-button--previous),
+sl-carousel::part(navigation-button--next) {
+    color: #98a5b1;
+    font-size: 2rem;
+    transform: scale(1.6); /* makes icons larger */
+}
+sl-carousel::part(pagination-item--active) {
+    background-color: #98a5b1;
+}
+/* --- Hide control box background --- */
+.animated-image::part(control-box) {
+    background: transparent;
+    border: none;
+    color: white;
+}
+/* ================================== BRIGHT YELLOW EYES SECTION ======================================= */
 #owl-eyes img{
-    width: 1100px;
+    width: 80vw;
     height: auto;
     position: absolute;
     z-index: 10;
@@ -262,13 +341,14 @@ sl-carousel::part(base) {
     right: 0;
 }
 #eyes-btn {
-  display: flex;
+    display: flex;
     flex-direction: row-reverse;
     position: relative;
+    z-index: 10;
 }
 .fun-fact-eyes {
     background-color: #3d4150;
-    color: #dbd098;;
+    color: #dbd098;
     
 }
 .fun-fact-eyes .text-group {
@@ -279,162 +359,194 @@ sl-carousel::part(base) {
 }
 .fun-fact-eyes h2 { text-align: justify;}
 
+/* ---- SVG Trees styles & animation ------------------------------------- */ 
 .eyes-tree {
     position: absolute;
     z-index: 1;
     animation: sway 5s ease-in-out infinite alternate; /* Sway animation */
 }
-.left {
-    height: 1750px;
+/* ---- individual tree size and positioning */
+.left { /* left most tree */
+    width: 60vw;
     left: -10%;
     translate: 0 -700px;
     transform-origin: left;
 }
-.left-2 {
-    height: 1500px;
+.left-2 { /* left tree */
+    width: 60vw;
     left: -20%;
     translate: 0 -500px;
     transform-origin: bottom right; 
 }
-.right {
-    height: 700px;
+.right { /* right tree */
+    width: 30vw;
     right: -10%;
     translate: 0 -100px;
     transform-origin: bottom center;
     z-index: 10;
 }
-
-/* ---- Fun-fact 3: Diurnal ("Snowy owls are ... Diurnal") Section ---- */
-.fun-fact-diurnal h4 { font-size: 25px;}
-.fun-fact-diurnal h2 { font-size: 150px;}
-.fun-fact-diurnal p { opacity: 0; }
-.fun-fact-diurnal {
-    background-color: #05070a;
-    color: #dbd098;;
-    position: relative;
-    z-index: 20; /* higher than .eyes-tree (which is z-index:1) */
-}
-.fun-fact-diurnal .text-group{
-    color: #737b83;
- 
+/* -------- EYES INFO DIALONG  --------------------------------------- */
+#eyes-dialog p{
+    padding: 0 3em 3em 3em;
+    font-size: 1.5em;
+    color: #fdffbc;
 }
 
+#eyes-dialog::part(panel) {
+    background: #16181b;
+    border-radius: 20px;
+    border: 4px solid #000000;
+    box-shadow: 0 8px 30px rgba(248, 242, 180, 0.147);
+    overflow: hidden;
+}
+/* ================================== DIURNAL / TOGGLE SECTION ======================================= */
 #diurnal-heading {
     display: flex;
     flex-direction: row-reverse;
     margin-bottom: 20px;
     position: relative;
 }
-
-/* When toggled */
-.fun-fact-diurnal.active {
-    background-color: #98a5b1;
-    color: #ffffff;
+.fun-fact-diurnal p { opacity: 0; } /* Toggle off in dark mode */
+.fun-fact-diurnal h4 { font-size: 25px;}
+.fun-fact-diurnal h2 { font-size: 150px;}
+.fun-fact-diurnal .text-group{ color: #737b83;}
+.fun-fact-diurnal {
+    background-color: #05070a;
+    color: #dbd098;;
+    position: relative;
+    z-index: 20; 
 }
+/* -------- DIURNAL LIGHT TOGGLE --------------------------------------- */
+.fun-fact-diurnal.active { background-color: #98a5b1; color: #ffffff; } /* change colours when light toggled on */
+.fun-fact-diurnal.active h4 { opacity: 0; } /* toggle off in light mode */
+.fun-fact-diurnal.active p { opacity: 1; } /* toggle on in light mode */
+.fun-fact-diurnal.active h3 { color: #4c5460; } /* increase readability in light mode */
 
-.fun-fact-diurnal.active h4{
-    opacity: 0;
-}
-
-.fun-fact-diurnal.active h3{
-    color: #4c5460;
-}
-
-.fun-fact-diurnal.active p {
-    opacity: 1;
-}
-/* ---- Fun-fact 4: Tundra ("They live in the Artic Tundra") Section ---- */
+/* ================================== TUNDRA / HABITAT SECTION ======================================= */
 .fun-fact-tundra {
     background-color: #98a5b1;
-    background-image: url();
+    background-image: url(images/background/tundra-background.png);
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
     background-position: right; /* Adjust horizontal position to postion moon under title */
     color: #f8f8f3;
 }
-.fun-fact-tundra h3, p {
-    color: #4c5460;
+#tundra-heading {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
 }
-/* ---- Fun-fact 5: Snowy owls can be found in ... ---- */
-.fun-fact-map {
-    background-color: #c3cad2;
+#tundra-heading:hover {
+    color: #cce4ff; /* fun interaction on heading */
+}
+.fun-fact-tundra h3 {
     color: #4c5460;
+    text-align: left;
+}
+.fun-fact-tundra .text-group p {
+    text-align: left;
 }
 
-/* ---- Fun-fact 6: Feet ("Snowy owls have feathered feet") Section ---- */
+/* ---- MAP DIALOG ----------------------------------------------------------------------------- */
+#map-dialog::part(panel) {
+    background: #c3cad2;
+    border: 4px solid #ffffff;
+}
+#map-dialog img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+#map-dialog p {
+    font-size: 1em;
+    padding: 1em;
+}
+/* ================================== FEATHERS FOR FEET SECTION ==================================== */
 .fun-fact-feet {
     background-color: #b4b6ba;
     background-image: url(images/background/feathers-background.png);
     background-size:  cover; /* Ensure the image covers the entire div */
     background-position: center; /* Center the image */
-
-
     color: #f5fcfd;
+    
 }
-/* ---- Owl SVG ----- */
-#hero-owl {
-    width: 300px;
-    height: auto;
-    position: absolute;
-    left:5%;
-}
-
-/* ---- cards Section ----- */
+/* ================================== CARDS / MALE/FEMALE SECTION ================================== */
 .cards {
-  background-image: url(images/background/cards-background.png);
-  background-size: cover; /* makes image fill the section */
-  background-position: center center; /* center both horizontally and vertically */
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* centers the cards vertically */
-  min-height: 100vh; /* ensures section fills the screen */
-  width: 100%;
-  position: relative;
-  padding: 2rem 0;
+    background-image: url(images/background/cards-background.png);
+    background-size: cover; /* makes image fill the section */
+    background-position: center center; /* center both horizontally and vertically */
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* centers the cards vertically */
+    min-height: 100vh; /* ensures section fills the screen */
+    width: 100%;
+    position: relative;
+    padding: 2rem 0;
 }
 
 .card-container {
-  display: flex;
-  gap: 6rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-self: center
+    display: flex;
+    gap: 6rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-self: center
 }
 
 .flip-card {
-  background-color: transparent;
-  width: 400px; 
-  height: 500px; 
-  cursor: pointer; 
+    background-color: transparent;
+    width: 400px; 
+    height: 500px; 
+    cursor: pointer; 
 } 
 
 .card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s; 
-  transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s; 
+    transform-style: preserve-3d;
+}
+
+.card-container p {
+    color: #2d3540;
+    background-color: #b4bbc4;
+    font-size: 1em;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 5px;
 }
 
 .flip-card.flipped .card-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
+.card-front img{
+    max-width: 350px;
+}
 .card-front,
 .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: #4c5460;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #4c5460;
+}
+
+.card-front {
+    transform-origin: bottom center; /* so they sway from the trunk */
+    animation: bounce 3s ease-in-out infinite alternate; /* Sway animation */
+    filter: drop-shadow(0 0 20px rgb(255, 255, 255)); /* Yellow glow effect */
 }
 
 .card-back img{
@@ -443,33 +555,144 @@ sl-carousel::part(base) {
 
 }
 .card-back {
-  transform: rotateY(180deg);
-  background: #4c5460;
+    transform: rotateY(180deg);
+    background: #4c5460;
 }
 
 .cards .text-group {
-  text-align: center;
-  color: white;
-  font-weight: 600;
-  font-size: 1.2em;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+    text-align: center;
+    color: #dbd098;
+    font-weight: 600;
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
-/* ---- Quiz Section ----- */
-.quiz h2 {
-    color: #4c5460;
-}
-
+/* ================================== QUIZ / TEST YOUR KNOWLEDGE ================================== */
 .quiz {
     background-image: url(images/background/quiz-background.png);
-    background-size: cover; /* makes image fill the section */
-    background-position: center center; /* center both horizontally and vertically */
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
+    padding: 10vh 5vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.quiz .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    width: 100%;
+}
+/* ---- Text styling ---- */
+.quiz .text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    color: #2d3540;
+}
+
+.quiz .text-group h2 {
+    color: #4c5460;
+    font-size: 6em;
+    margin: 0;
+}
+/* ---- Exclamation mark SVG ---- */
 #exclamation {
-    animation: bounce 1s infinite; /* Apply bounce animation */
-    height: 25px;
+    flex-shrink: 0;
+    width: 100px; /* control exclamation size */
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+#exclamation svg {
+    width: 75%;
+    height: auto;
+    display: block;
+}
+
+
+/* --------------- Quiz Dialog ------------------------------------- */
+.quiz-page {
+    background-image: url(images/background/cards-background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    color: #2d3540;
+}
+
+.quiz-card {
+    background: #737b83;
+    border-radius: 20px;
+    border: white solid 4px;
+    padding: 2rem 3rem;
+    max-width: 700px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.quiz-card h2 {
+    font-size: 2em;
+    letter-spacing: 0;
+}
+
+#quiz-dialog::part(panel) {
+    background-color: white;
+    background-image: url(images/background/cards-background.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    color: #2d3540;
+}
+/* ================================== MEDIA QUERIES: RESPONSIVE DESIGN ================================== */
+@media (max-width: 768px) {
+  /* Styles for tablets and phones */
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .text-group {
+    max-width: 90%;
+    margin: 1em 0;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 0.6em 1.2em;
+  }
+
+  img, svg {
+    max-width: 80%;
+    height: auto;
+  }
+  /* -----------------------------------CARDS---------------------------------------------*/
+  .cards svg{
+    display: none;
+  }
+  /* -----------------------------------QUIZ---------------------------------------------*/
+  .quiz {
+    display: none;
+  }
 }

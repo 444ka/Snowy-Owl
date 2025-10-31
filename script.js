@@ -1,21 +1,73 @@
-// GSAP Animation plugins
+// ------ GSAP Animation plugins ----------------------------------
 gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger plugin
 gsap.registerPlugin(SplitText);  // Register SplitText plugin
 gsap.registerPlugin(MotionPathPlugin); // Register MotionPath plugin
 
-// Feather falling animation
+// ================== SECTIONS =====================================
+
+// ------- Wings Section: Carousel Dialog (ShoeLace) --------------
+const wingsBtn = document.querySelector("#wings-btn");
+const flightDialog = document.querySelector("#flight-dialog");
+wingsBtn.addEventListener('click', () => {
+     flightDialog.show(); // opens the Shoelace dialog
+});
+// ------- Eyes Section: Info Dialog ------------------------------
+const eyesBtn = document.querySelector("#eyes-btn");
+const eyesDialog = document.querySelector("#eyes-dialog");
+eyesBtn.addEventListener('click', () => {
+     eyesDialog.show(); // opens the Shoelace dialog
+});
+
+// ------- Diurnal Section: Toggle --------------------------------
+const diurnalsection = document.querySelector(".fun-fact-diurnal");
+const diurnalBtn = document.querySelector('#diurnal-btn');
+
+diurnalBtn.addEventListener('click', () => {
+    diurnalsection.classList.toggle('active');
+});
+// ------- Tundra Section: Toggle ----------------------------------
+const tundraSection = document.querySelector(".fun-fact-tundra");
+const tundraBtn = document.querySelector("#tundra-btn");
+const mapDialog = document.querySelector("#map-dialog");
+
+tundraBtn.addEventListener('click', ()=> {
+    tundraSection.classList.toggle('active');
+    mapDialog.show(); // opens the Shoelace dialog
+})
+
+// ------- Cards flipping functionality -----------------------------
+const cards = document.querySelectorAll('.flip-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+  });
+});
+
+const quizBtn = document.querySelector("#start-quiz");
+const quizDialog = document.querySelector("#quiz-dialog");
+quizBtn.addEventListener("click", () => {
+    quizDialog.show(); // opens the Shoelace dialog
+});
+// ================== ANIMATIONS ====================================
+// ------- Feather falling animation ------------------------------
+// Array of feather elements
 const feathers = [
     document.querySelector('#feather-1'),
     document.querySelector('#feather-2'),
     document.querySelector('#feather-3'),
 ];
 
-// Initial setup
-feathers.forEach((feather) => {
-    resetFeather(feather);
+// Initial setup of feathers
+feathers.forEach((feather) => { // target each feather in the array
+    resetFeather(feather); 
     animateFeather(feather);
 });
 
+// Name: reserFeather
+// Desscription: Sets the intial postition of the feather randomly
+// Parameters: el - DOM element to animate
+// Returns: None
 function resetFeather(el) {
     gsap.set(el, {
         x: gsap.utils.random(0, window.innerWidth), // start at random horizontal position
@@ -25,8 +77,6 @@ function resetFeather(el) {
     });
 }
 
-// TODO: Adjust animation for each feather, maybe add variations in speed and path using bezier 
-
 // Name: animateFeather
 // Description: Continuous falling animation for feather elements
 // Parameters: el - DOM element to animate
@@ -35,9 +85,13 @@ function animateFeather(el) {
     
     gsap.to(el, {
         motionPath: [
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 1}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 2}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 3}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 4}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 5}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 6}, 
+            {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 7}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 8}, 
             {x: gsap.utils.random(0, window.innerWidth), y: window.innerHeight * 10}],
         y: document.body.scrollHeight + 200,
@@ -54,7 +108,7 @@ function animateFeather(el) {
 
 });
 }
-
+// ------- Text animation ---------------------------------------
 // Name: animateText
 // Description: Simple, fixed animation for heading text
 // Parameters: el - DOM element to animate
@@ -87,10 +141,8 @@ function animateText(el) {
             },
             "-=0.9"
     );
-
     return { split, tl }; 
 }
-
 // Apply same animation to headings
 animateText(document.querySelector(".hero-text h1")); // Website title
 animateText(document.querySelector(".intro .text-group h3")); // Intro / transition
@@ -101,26 +153,3 @@ animateText(document.querySelector(".fun-fact-tundra h2")); // Fun Fact 4
 animateText(document.querySelector(".fun-fact-map h3")); // Fun Fact 5
 animateText(document.querySelector(".fun-fact-feet h2")); // Fun Fact 6
 animateText(document.querySelector(".quiz .text-group h2")); // Quiz section
-animateText(document.querySelector(".cards p")); 
-
-const wingsBtn = document.querySelector("#wings-btn");
-const flightDialog = document.querySelector("#flight-dialog");
-wingsBtn.addEventListener('click', () => {
-     flightDialog.show(); // opens the Shoelace dialog
-});
-
-// Diurnal section transition
-const section = document.querySelector(".fun-fact-diurnal");
-const button = document.querySelector('#interact-btn');
-
-button.addEventListener('click', () => {
-    section.classList.toggle('active');
-});
-
-const cards = document.querySelectorAll('.flip-card');
-
-cards.forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('flipped');
-  });
-});
