@@ -6,7 +6,7 @@
     <title>Snowy Owl Quiz</title>
 
     <!-- Shoelace for web components -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
 
     <!-- Google Fonts -->
@@ -23,23 +23,21 @@
 </head>
 <body>
   <!-- AUDIO! KAHOOT MUSIC -->
-  <audio type="audio/mp3" src="https://joeybabcock.me/blog/wp-content/uploads/2019/05/lobby-classic-game-halloween.mp3" autoplay loop></audio>
+  <audio src="https://joeybabcock.me/blog/wp-content/uploads/2019/05/lobby-classic-game-halloween.mp3" autoplay loop></audio>
   <section class="quiz-page">
-    <!-------------RETURN BUTTON--------------------->
+    <!--==================RETURN BUTTON==================-->
     <div id="quiz-return">
-      <a href="index.html">  
-        <button> Return </button>
-      </a>
-      <div class="container"> </div>
+      <button id="return-btn"> Return </button>
+      <div class="container"> </div> <!--To push button the the left-->
     </div>
     <div class="quiz-header">
       <h1>Snowy Owl Quiz</h1>
     </div>
     <div class="quiz-card">
       <div class="quiz-body">
-        <!-------------QUESTION--------------------->
+        <!--==================QUESTION==================-->
         <p id="question"> <p>
-        <!-------------OPTIONS---------------------->
+        <!--==================OPTIONS==================-->
         <div class="options">
           <p class=option id="option-1">  </p>
           <p class=option id="option-2">  </p>
@@ -52,7 +50,7 @@
       </div>
     </div>
   </section>
-  <!------------------------- SHOELACE DIALOGS ------------------------->
+  <!---==================================== SHOELACE DIALOGS  ====================================-->
   <sl-dialog id="correct-dialog"> <!--CORRECT!-->
     <p>You got it right!</p>
   </sl-dialog>
@@ -63,9 +61,7 @@
 
   <sl-dialog id="finish-dialog">
     <p> You’ve finished the quiz — great job!</p>  <!--FINISH!-->
-    <a href="index.html">  
-      <button> Return </button>
-    </a>
+    <button id="finish-return-btn"> Return </button>
   </sl-dialog>
 
 </body>

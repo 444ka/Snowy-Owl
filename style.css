@@ -204,6 +204,28 @@ h1 {
 
 .intro h3 { color: #a2aab8; }/* Intro title - Explore the  */
 /* ================================== WINGS/SILENT HUNTER SECTION ======================================= */
+.fun-fact-wings {
+    flex-direction: row-reverse;
+    padding: 0;
+    background-image: url(images/background/wings-mountains.png);
+    background-size: cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    position: relative;
+    padding-top: 100px;
+    max-height: 100vh;
+}
+.fun-fact-wings .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    position: relative; 
+    padding-right: 5em;
+    z-index: 10;
+}
+/* ------ text stlying -------- */
 .fun-fact-wings p { 
     color: #c3cad2;
     font-size: 30px;
@@ -219,22 +241,7 @@ h1 {
     position: relative;
     z-index: 100;
 }
-
-.fun-fact-wings .container {
-    position: relative;
-    padding-right: 5em;
-}
-
-.fun-fact-wings {
-    flex-direction: row-reverse;
-    padding: 0;
-    background-image: url(images/background/wings-mountains.png);
-    background-size: cover; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
-    position: relative;
-    padding-top: 100px;
-    max-height: 100vh;
-}
+/* ----- mountain range svg ------ */
 .mountain-range {
   position: absolute;
   bottom: 0;
@@ -242,18 +249,6 @@ h1 {
   translate: 0 300px;
   z-index: 1;
 }
-
-.fun-fact-wings .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
-    max-width: 1400px;
-    position: relative; 
-    z-index: 10;
-}
-
 /* --- Owl styling --- */
 #owl-wings img {
     width: 60vw; /* Owl should be big */
@@ -262,8 +257,7 @@ h1 {
     translate: 10em;
     z-index: 20;
 }
-
-/* --- Dialog styling --- */
+/* --- General Dialog styling: mostly for the flight dialog --- */
 sl-dialog::part(panel) {
     background: #f2f3f8;
     border-radius: 20px;
@@ -275,7 +269,7 @@ sl-dialog::part(panel) {
     align-items: center;
     
 }
-sl-dialog::part(close-button) {
+sl-dialog::part(close-button) { /* hide close button */
   display: none;
 }
 sl-dialog h2 {
@@ -426,6 +420,7 @@ sl-carousel::part(pagination-item--active) {
     font-weight: 600;
 }
 
+/* ------- Text styling -------------- */
 .fun-fact-diurnal h4 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -469,8 +464,8 @@ sl-carousel::part(pagination-item--active) {
     justify-content: center;
     overflow: hidden;
 }
-
-#tundra-heading {
+/*------ Text styling ------------ */
+#tundra-heading { 
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
@@ -480,10 +475,7 @@ sl-carousel::part(pagination-item--active) {
     font-weight: 600;
     transition: color 0.3s;
 }
-
-#tundra-heading:hover {
-    color: #cce4ff; /* fun interaction on heading */
-}
+#tundra-heading:hover { color: #cce4ff; /* fun interaction on heading */ }
 
 .fun-fact-tundra h3 {
     color: #4c5460;
@@ -491,12 +483,10 @@ sl-carousel::part(pagination-item--active) {
     margin-bottom: 1rem;
     font-size: 2.5rem;
 }
-
 .fun-fact-tundra .text-group p {
     text-align: left;
 
 }
-
 /* ---- MAP DIALOG ----------------------------------------------------------------------------- */
 #map-dialog::part(panel) {
     background: #c3cad2;
@@ -550,12 +540,12 @@ sl-carousel::part(pagination-item--active) {
     flex-direction: column;
     align-items: center;
     justify-content: center; /* centers the cards vertically */
-    min-height: 100vh; /* ensures section fills the screen */
+    min-height: 100vh;
     width: 100%;
     position: relative;
     padding: 2rem 0;
 }
-
+/* Container that holds both flip cards side by side */
 .card-container {
     display: flex;
     gap: 6rem;
@@ -564,14 +554,14 @@ sl-carousel::part(pagination-item--active) {
     flex-wrap: wrap;
     justify-self: center
 }
-
+/* Each individual flip card */
 .flip-card {
     background-color: transparent;
     width: 400px; 
     height: 500px; 
     cursor: pointer; 
 } 
-
+/* Inner wrapper that handles the flipping animation */
 .card-inner {
     position: relative;
     width: 100%;
@@ -588,11 +578,11 @@ sl-carousel::part(pagination-item--active) {
     margin: 1em;
     border-radius: 5px;
 }
-
+/* Applies the flip transformation when clicked */
 .flip-card.flipped .card-inner {
     transform: rotateY(180deg);
 }
-
+/* Image styling on the front face */
 .card-front img{
     max-width: 350px;
 }
@@ -609,23 +599,21 @@ sl-carousel::part(pagination-item--active) {
     flex-direction: column;
     background: #4c5460;
 }
-
+/* Front of card: adds bounce animation and glow */
 .card-front {
     transform-origin: bottom center; /* so they sway from the trunk */
     animation: bounce 3s ease-in-out infinite alternate; /* Sway animation */
     filter: drop-shadow(0 0 20px rgb(255, 255, 255)); /* Yellow glow effect */
 }
-
 .card-back img{
     width: 20rem;
     border-radius: 20px;
-
 }
+/* Back of card: rotated to be hidden until flipped */
 .card-back {
     transform: rotateY(180deg);
     background: #4c5460;
 }
-
 .cards .text-group {
     text-align: center;
     color: #dbd098;
@@ -635,7 +623,6 @@ sl-carousel::part(pagination-item--active) {
     bottom: 0;
     width: 100%;
 }
-
 /* ================================== QUIZ / TEST YOUR KNOWLEDGE ================================== */
 .quiz {
     background-image: url(images/background/quiz-background.png);

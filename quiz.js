@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 // ======== quiz.html (used by quiz.html)==========================
 const option1 = document.querySelector("#option-1");
 const option2 = document.querySelector("#option-2");
@@ -123,3 +124,10 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
+// ------- Quiz navigation button -----------------------------
+document.getElementById("return-btn").addEventListener("click", function() {
+    window.location.href = "index.html";
+});
+document.getElementById("finish-return-btn").addEventListener("click", function() {
+    window.location.href = "index.html";
+});

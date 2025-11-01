@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+/* global gsap, ScrollTrigger, SplitText, MotionPathPlugin */
 // ------ GSAP Animation plugins ----------------------------------
 gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger plugin
 gsap.registerPlugin(SplitText);  // Register SplitText plugin
@@ -38,7 +40,7 @@ const mapDialog = document.querySelector("#map-dialog");
 tundraBtn.addEventListener('click', ()=> {
     tundraSection.classList.toggle('active');
     mapDialog.show(); // opens the Shoelace dialog
-})
+});
 
 // ------- Cards flipping functionality -----------------------------
 const cards = document.querySelectorAll('.flip-card');
@@ -48,7 +50,10 @@ cards.forEach(card => {
     card.classList.toggle('flipped');
   });
 });
-
+// ------- Quiz navigation button -----------------------------
+document.getElementById("start-quiz").addEventListener("click", function() {
+    window.location.href = "quiz.html";
+});
 // ================== ANIMATIONS ====================================
 // ------- Feather falling animation ------------------------------
 // Array of feather elements
