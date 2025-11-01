@@ -1,35 +1,15 @@
-// ------- Quiz -----------------------------
+// ======== quiz.html (used by quiz.html)==========================
 const option1 = document.querySelector("#option-1");
 const option2 = document.querySelector("#option-2");
 const option3 = document.querySelector("#option-3");
 const submitBtn = document.querySelector("#submit-btn");
 
-let choice = null;
+let choice = null; // Choice / answer selected by user
+const questionText = document.querySelector("#question");
+let currentQuestion = 0; // Keeps track of which question 
 
-option1.addEventListener("click", () => {
-  choice = 1;
-  highlightSelection(option1);
-});
-
-option2.addEventListener("click", () => {
-  choice = 2;
-  highlightSelection(option2);
-});
-
-option3.addEventListener("click", () => {
-  choice = 3;
-  highlightSelection(option3);
-});
-
-function highlightSelection(selectedOption) {
-  // Clear previous highlights
-  [option1, option2, option3].forEach(option => {
-    option.style.color = "";
-  });
-  // Highlight the new choice
-  selectedOption.style.color = "#d1c588";
-}
-
+// ======== ARRAY OF QUESTIONS ====================================
+// Additional questions can be added
 const questions = [
   {
     question: "Where do snowy owls live?",
@@ -67,42 +47,79 @@ const questions = [
   }
 ];
 
-const questionText = document.querySelector("#question");
-let currentQuestion = 0;
-let score = 0;
+// ------- Event listeners on click for each option. ---------
+// Update the to be highlighted by calling highlightSelection()
+option1.addEventListener("click", () => { // OPTION 1
+  choice = 1;
+  highlightSelection(option1);
+});
+option2.addEventListener("click", () => { // OPTION 2
+  choice = 2;
+  highlightSelection(option2);
+});
+option3.addEventListener("click", () => { // OPTION 3
+  choice = 3;
+  highlightSelection(option3);
+});
 
+// ======== FUNCTIONS ====================================
+// Name: highlightSelection
+// Desscription: Clears previously highlighted option and updates
+//    to highlight selectedOption
+// Parameters: selectedOption
+// Returns: None
+function highlightSelection(selectedOption) {
+  // Clear highlight for each option
+  [option1, option2, option3].forEach(option => {
+    option.style.color = ""; // Clear previous highlights
+  });
+  selectedOption.style.color = "#d1c588"; // Highlight the new choice
+}
+
+// Name: loadQuestion
+// Desscription: Updates the question on the html along with the
+//    options that are shown. 
+// Parameters: None
+// Returns: None
 function loadQuestion() {
+  // Update the question shown on HTML
   const q = questions[currentQuestion];
   questionText.textContent = q.question;
+  // Update the options shown on HTML
   option1.textContent = q.options[0];
   option2.textContent = q.options[1];
   option3.textContent = q.options[2];
-  choice = null;
+  choice = null; // Reset selected choice
+  // Reset highlighted options
   [option1, option2, option3].forEach(opt => {
-    opt.style.backgroundColor = "";
     opt.style.color = "";
   });
 }
 
 loadQuestion();
 
+// ------- Event listeners for submit button --------------------------------------------------
+// ------- Handles different selected option scenarios ----------------------------------------
 submitBtn.addEventListener("click", () => {
-    if (choice === null) {
-      return;
-    }
+  // Do nothing when no option was selected before submit
+  if (choice === null) {
+    return;
+  }
+  // Correct option selected
+  if (choice === questions[currentQuestion].correct) {
+      document.querySelector('#correct-dialog').show(); // Show correct dialog as feedback
+      currentQuestion++;  // Increment the current question to update
+  }
+  // Incorrect option selected
+  else {
+      document.querySelector('#wrong-dialog').show();  // Show Incorrect dialog as feedback
+  }
 
-    if (choice === questions[currentQuestion].correct) {
-        document.querySelector('#correct-dialog').show();
-        currentQuestion++;
-    }
-    else {
-        document.querySelector('#wrong-dialog').show();
-    }
-
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-    } 
-    else {
-        document.querySelector('#finish-dialog').show();
-    }
+  if (currentQuestion < questions.length) { // Load question so long as there are questions left
+      loadQuestion();
+  } 
+  else { // If there are no more questions remaing; the quiz has ended
+      document.querySelector('#finish-dialog').show(); // Show finish quiz dialog as feedback
+  }
 });
+

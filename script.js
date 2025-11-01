@@ -17,7 +17,12 @@ const eyesDialog = document.querySelector("#eyes-dialog");
 eyesBtn.addEventListener('click', () => {
      eyesDialog.show(); // opens the Shoelace dialog
 });
-
+// ------- Eyes Section: Info Dialog ------------------------------
+const feetBtn = document.querySelector("#feet-btn");
+const feetDialog = document.querySelector("#feet-dialog");
+feetBtn.addEventListener('click', () => {
+     feetDialog.show(); // opens the Shoelace dialog
+});
 // ------- Diurnal Section: Toggle --------------------------------
 const diurnalsection = document.querySelector(".fun-fact-diurnal");
 const diurnalBtn = document.querySelector('#diurnal-btn');
